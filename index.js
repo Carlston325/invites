@@ -1,112 +1,176 @@
-// BUTTON 0: Title
-function getTitleValue (){
+let arrowButton = $(".arrow-button")
+let movingButton = true;
+
+let photoSection = $("#photo-Div");
+let videoSection = $("#video-Div");
+
+// DOCUMENT
+photoSection.slideUp();
+
+$(".image-btn").remove();
+
+// Change Section --SMALL WEBPAGE BUTTON-- (Photo - Video)
+let webSize = window.matchMedia("(max-width: 650px)");
+
+
+if (webSize.matches) {
+    $("#select-photo-Div").remove();
+    $("#select-video-Div").remove();
     
-    let titleInput = document.getElementById("title-input").value
-        
-    let title = document.getElementById("title");
-    title.innerText = titleInput;
-
-    $("#submit-title").hide();
+    $("#body").after("<div class='section-change-btn'><h3> <span class='green'>PHOTOS</span> <span style='color: white;'>/</span> <span class='blue'>VIDEOS</span> </h3>");
 }
 
-// BUTTON 1: Date
-function getDateValue (){
+$(".section-change-btn").click (function () {
+
+    let sectionChangeBTN = $(".section-change-btn");
+    sectionChangeBTN.addClass("btn-shadow");
     
-    let dayInput = document.getElementById("day-select").value;
-    let monthInput = document.getElementById("month-select").value;
-    let yearInput = document.getElementById("year-input").value;
+    setTimeout(function() {
+        sectionChangeBTN.removeClass("btn-shadow");
+    }, 100);
+
+    if (movingButton) {
+
+        videoSection.slideUp();
+        photoSection.slideDown();
+
+        $(".green").addClass("text-flash");
+
+        setTimeout(function() {
+            $(".green").removeClass("text-flash");
+        }, 100);
+    } else {
+
+        videoSection.slideDown();
+        photoSection.slideUp();
+
+        $(".blue").addClass("text-flash");
+
+        setTimeout(function() {
+            $(".blue").removeClass("text-flash");
+        }, 100);
+    }
+
+    movingButton = !movingButton;   
+});
+
+// Change Section --ARROW-- (Photo - Video)
+arrowButton.click(function() {
+
+    if (movingButton) {
+        // photo section
+        videoSection.slideUp();
+        photoSection.slideDown();
+
+    } else {
+        // video section
+        videoSection.slideDown();
+        photoSection.slideUp();
+    }
+
+    movingButton = !movingButton;
+});
+
+// Change Section --SECTION-- (Photo - Video)
+
+
+// Add Media --BUTTON CLICK--
+$("#add-media-Div").click (function () {
+
+    let activeButton = $("#add-media-Div");
+    let textFlash = $(".btn");
+    
+    activeButton.addClass("btn-shadow");
+    textFlash.addClass("text-flash");
+
+    setTimeout(function() {
+        activeButton.removeClass("btn-shadow");
+        textFlash.removeClass("text-flash");
+    }, 200);
+});
+
+
+// Add MORE Photos & Videos (BOXES)
+let i = 1;
+
+$("#add-videos").click (function () {
+  
+    let amountOfVideoBoxes = $(".video").length;
+
+    for (i; i <= amountOfVideoBoxes; i++) {
+        $("#add-videos").before("<div class='video-content'><label for='video-upload'><img class='video V"+ i + "' src='./assets/Videos/videoPlaceholder.jpg'></label><input type='file' name='Videos' id='video-upload' class='video-input media'></div>");
+    }
+}); 
+
+
+let x = 1;
+
+$("#add-photos").click (function () {
+  
+    let amountOfImageBoxes = $(".image").length;
+
+    for (x; x <= amountOfImageBoxes; x++) {
+        $("#add-photos").before("<div class='image-content'><label for='image-upload'><img class='image I"+ x + "' src='./assets/Images/imagePlaceholder.jpg'><input type='file' name='Images' id='image-upload' class='image-input media'></div>");
+    }
+}); 
+
+// Upload Photo OR Video Media
+function addPhoto (image) {
+    var upload = document.getElementById("image-upload");
+    image.src = URL.createObjectURL(upload.files[0])
+}
+
+var imageBoxes = document.querySelectorAll(".image").length;
+
+for (var y = 0; y <= imageBoxes; y++) {
+
+    document.querySelectorAll(".image")[y].addEventListener("click", addPhoto(this)); 
+}
+
+
+
+
+
+// function addImage () {
+//     console.log(document.querySelectorAll(".image").length)
+    
+//     let image = document.querySelectorAll(".image")["I" + y];
+//     let uploadImage = $("#image-upload");
+
+//     uploadImage.onchange = function () {
+//         image.src = URL.createObjectURL(uploadImage.files[0])
+//     }
+// }
+
+// let imageBoxAmount = document.querySelectorAll(".image").length;
+
+// for (let y = 0; y <= imageBoxAmount; y++) {
+    
+//     $(".I"+ y).click (addImage ());
+// }
+// let z = 1;
+
+// $(".video-btn").click (function () {
+//     console.log(z)
+//     if (z - 1 === 1) {    
+//         let image = document.getElementByClassName("V0");
+//         let uploadImage = $("#video-upload");
+    
+//         uploadImage.onchange = function () {
+//             image.src = URL.createObjectURL(uploadImage.files[0])
+//         }
+       
+//     } else {
+//        console.log("worksvideo")
+
+//             let image = document.getElementById("I" + z);
+//             let uploadImage = $("#video-upload");
+
+//             uploadImage.onchange = function () {
+//                 image.src = URL.createObjectURL(uploadImage.files[0])
+//             }
         
-    let day = document.getElementById("day");
-    let month = document.getElementById("month");
-    let year = document.getElementById("year");
+//     }
 
-    day.innerText = dayInput;
-    month.innerText = monthInput;
-    year.innerText = yearInput;
-
-    $("#submit-date").hide();
-}
-
-// BUTTON 2: Message
-function getMessageValue (){
-
-    let messageInput = document.getElementById("message-input").value;
-    let mentionInput1 = document.getElementById("mention-input-1").value;
-    let mentionInput2 = document.getElementById("mention-input-2").value;
-    let mentionInput3 = document.getElementById("mention-input-3").value;
-
-
-    let message = document.getElementById("message-title");
-    let mention_1 = document.querySelector("#mention-1");
-    let mention_2 = document.querySelector("#mention-2");
-    let mention_3 = document.querySelector("#mention-3");
-
-    message.innerText = messageInput;
-    mention_1.innerText = mentionInput1;
-    mention_2.innerText = mentionInput2;
-    mention_3.innerText = mentionInput3;
-
-    $("#submit-message").hide();
-}
-
-// BUTTON 3: Choose Page Background
-let selectBackground = document.querySelector("#saved-bg-upload");
-let backgroundImage = document.querySelector(".background-img");
-
-function changeBackground() {
-    backgroundImage.setAttribute("src", "./assets/card_background/" + selectBackground.value + ".jpg");
-}
-
-// BUTTON: Upload Own Background
-let imageUpload = document.querySelector("#background-img");
-let bgUpload = document.querySelector("#bg-upload");
-
-bgUpload.onchange = function () {
-    console.log(imageUpload.src = URL.createObjectURL(bgUpload.files[0]))
-    imageUpload.src = URL.createObjectURL(bgUpload.files[0])
-}
-
-// BUTTON 4: Location
-let locationInput = document.querySelector("#location-url");
-let getLocation = document.querySelector("#location a");
-
-function changeLocation() {
-    getLocation.setAttribute("href", locationInput.value);
-
-    $("#submit-location").hide();
-}
-
-// BUTTON 5: Card
-$("#submit-card").click (function () {
-    $(".input-containers").remove();
-    $("#background-upload-container").remove();
-    $("#submit-card").remove();
-
-})
-
-
-// TRIGGER EVENT on BUTTON CLICK
-let numberOfButtons = document.querySelectorAll("button").length;
-
-for (let i = 0; i <= numberOfButtons; i++) {
-
-    document.querySelectorAll("button")[i].addEventListener("click", function(e) {
-        e.preventDefault();
-
-        if (i === 0) {
-            getTitleValue();
-
-        } else if (i === 1) {
-            getDateValue();
-
-        } else if (i === 2) {
-            getMessageValue();
-            
-        } else if (i === 3) {
-            selectBackground.addEventListener("change", changeBackground());
-
-        } else if (i === 4) {
-            changeLocation();
-        }
-    });
-}
+//     z++
+// });
