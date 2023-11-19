@@ -3,60 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Gallery</title>
-    <link  href="./styles.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <title>Invites</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    
-    <div class="container">
-        <div id="header" class="card">
-            <h1 id="title">
-                The Gallery
-            </h1>
-        </div>
-        <div id="body" class="card">
-            
-            <div id="video-Div">
-                <h2 id="video-title">
-                    <div id="select-video-Div" class="btn arrow-button">
-                        <img id="video-section" class="select-section" src="./assets/svg/caret-left-square-fill.svg" alt="left & right arrows"> 
-                    </div>
-                    Videos
-                </h2>
-                <div id="video-container">
-                    <div class="video-content">
-                        <label for="video-upload"><img class="video V0" src="./assets/Videos/videoPlaceholder.jpg" alt=""></label>
-                        <input type="file" name="Videos" id="video-upload" class="video-input media">
-                    </div>
-                    <div id="add-videos"><h3>+ ADD SECTION</h3></div>
-                </div>
-            </div>
-            <div id="photo-Div">
-                <h2 id="photo-title">
-                    <div id="select-photo-Div" class="btn arrow-button">
-                        <img id="photo-section" class="select-section" src="./assets/svg/caret-right-square-fill.svg" alt="left & right arrows"> 
-                    </div>
-                    Photos
-                </h2>
-                <div id="image-container">
-                    <div class="image-content">
-                        <label for="image-upload"><img class="image I0" src="./assets/Images/imagePlaceholder.jpg" alt=""></label>
-                        <input type="file" name="Images" id="image-upload" class="image-input media">
-                    </div>
-                    <div id="add-photos"><h3>+ ADD SECTION</h3></div>
-                </div>
-            </div>
-            
-        </div>
-        <div id="footer" class="card">
-           
+<div class="backgroundImageDiv">
+    <img src="./assets/card_background/Background-2.jpg" id="background-img" class="background-img">
+</div>
+<div class="container">
+    <div id="title-container" class="card">
+        <h1 id="title" class="title-1">What is the Celebration</h1>
+        <div id="submit-title" class="input-containers">
+            <input type="text" id="title-input" class="input" placeholder="Enter Title" >
+            <button type="submit" class="btn submit-title">SUBMIT TITLE</button>
         </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./index.js"></script>
+    <div id="date-container" class="card">
+        <div id="date" class="date-1">
+            <h2 id="day">day</h2>
+            <h2 id="month">month</h2>
+            <h2 id="year">year</h2>
+        </div>
+        <div id="submit-date" class="input-containers">
+            <select name="date" id="day-select">
+                <option value="">DAY</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+
+            <select name="date" id="month-select">
+                <option value="">MONTH</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <input type="number" id="year-input" class="input" placeholder="Enter Year">
+            <button type="submit" class="btn submit-date">SUBMIT DATE</button>
+        </div>
+    </div>
+
+    <div id="message-container" class="card">
+        <div id="message">
+            <h3 id="message-title">Your Message</h3>
+            <ul id="mentions">
+                <li id="mention-1">any mentions</li>
+                <li id="mention-2">any other mentions</li>
+                <li id="mention-3">and any other mentions</li>
+            </ul>
+        </div>
+        <div id="submit-message" class="input-containers">
+            <p>Message</p>
+            <input type="text" id="message-input" class="input" placeholder="Enter Message">
+            <p>Mentions</p>
+            <input type="text" id="mention-input-1" class="input" placeholder="Enter Mention">
+            <input type="text" id="mention-input-2" class="input" placeholder="Enter Mention">
+            <input type="text" id="mention-input-3" class="input" placeholder="Enter Mention">
+            <button type="submit" class="btn submit-message">SUBMIT</button>
+        </div>
+    </div>
+
+    <div id="background-upload-container" class="card">
+        <div id="select-bg" class="input-containers">
+            <label for="img-upload"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" class="bi bi-image-alt" viewBox="0 0 16 16">
+                <path d="M7 2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm4.225 4.053a.5.5 0 0 0-.577.093l-3.71 4.71-2.66-2.772a.5.5 0 0 0-.63.062L.002 13v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4.5l-4.777-3.947z"/>
+                </svg></label>
+            <select name="image" id="saved-bg-upload">
+                <option value="">Choose Your Background</option>
+                <option value="Background-1">Background 1</option>
+                <option value="Background-2">Background 2</option>
+                <option value="Background-3">Background 3</option>
+                <option value="Background-4">Background 4</option>
+                <option value="Background-5">Background 5</option>
+                <option value="Background-6">Background 6</option>
+                <option value="Background-7">Background 7</option>
+                <option value="Background-8">Background 8</option>
+            </select>
+            <button type="submit" class="btn submit-background">SUBMIT BACKGROUND</button>
+        </div>
+        <div>
+            <p class="bg-option">OR</p>
+        </div>
+        <div id="choose-own-bg" class="input-containers">
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" class="bi bi-file-earmark-arrow-up" viewBox="0 0 16 16">
+                <path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707V11.5z"/>
+                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+            </svg>
+            <div type="submit" class="own-background">
+                <label for="bg-upload">UPLOAD OWN</label>
+                <input type="file" name="background-img" id="bg-upload" class="input">
+            </div>
+        </div>
+    </div>    
+
+    <div id="location-container" class="card">
+        <div id="location" class="location">
+            <h3>Event Location</h3>
+            <a href="https://www.google.com/maps/@35.7040744,139.5577317,3a,75y,289.6h,87.01t,0.72r/data=!3m6!1e1!3m4!1sgT28ssf0BB2LxZ63JNcL1w!2e0!7i13312!8i6656">
+                GET LOCATION
+            </a>
+            <div id="submit-location" class="input-containers">
+                <input type="text" id="location-url" class="input" placeholder="Location URL">
+                <button type="submit" class="btn submit-background">SUBMIT LOCATION</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="submit-card" class="card">
+        <button type="submit" class="btn submit-background">SUBMIT CARD</button>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="./index.js" charset="UTF-8"></script>
 </body>
 </html>
